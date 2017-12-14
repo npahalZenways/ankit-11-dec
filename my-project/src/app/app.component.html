@@ -4,7 +4,7 @@
   This is my app title: {{title}}
 </p>
 
-<p [class]="redClass">Property binding</p>
+<p [class]="redClass">Property binding</p>{{redClass}}
 
 
 <!-- event binding using () -->
@@ -13,6 +13,7 @@
 
 <!-- Two-way binding -->
 <input type="text" [(ngModel)]="title">
+<textarea [(ngModel)]="redClass"></textarea>
 
 <!-- Local template variable -->
 <input type="text" #titleVar (keypress)="changeTitle(titleVar.value)">
@@ -25,7 +26,49 @@
 <h3>Enter person details below</h3>
 <input type="text" name="name" [(ngModel)]="person.name" placeholder="Name">
 <input type="text" name="phone" [(ngModel)]="person.phone" placeholder="Phone">
+<button (click)="addPerson()">Add</button>
 
 <h3>Person detaila are displayed below</h3>
 <p>Person's name: {{person.name?person.name:'---'}}</p>
 <p>Person's phone: {{person.phone?person.phone:'---'}}</p>
+
+<!-- built-in directives -->
+<!-- *ngIf -->
+<p *ngIf="title == 'app' || redClass == 'redClass'; else elseBlock">Title is equal to app</p>
+<ng-template #elseBlock>
+  <p>Title is not equal to app</p>
+</ng-template>
+
+<!-- *ngFor -->
+<table>
+  <thead>
+    <tr>
+      <th>S.no.</th>
+      <th>Name</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of persons; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.phone}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ngSwitch -->
+<input type="text" [(ngModel)]="yourChoice" placeholder="Enter your choice"><br><br>
+<span [ngSwitch]="yourChoice">
+  <span *ngSwitchCase="'Avnesh'">Your Choice is equal to Avnesh</span>
+  <span *ngSwitchCase="'Nimmy'">Your Choice is equal to Nimmy</span>
+  <span *ngSwitchDefault>Nothing matched here</span>
+</span>
+
+<!-- NgClass -->
+<br><br>
+
+<p [ngClass]="{'redClass':title == 'app', 'blueClass': title == 'app1', 'yellowClass': title == 'app2'}">Class changes according to app</p>
+
+
+<app-forms [myCompName]="title"></app-forms>

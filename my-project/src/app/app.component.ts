@@ -13,6 +13,8 @@ export class AppComponent {
     name:'',
     phone:''
   }
+  yourChoice = "";
+  persons = [];
   imageSource = "https://imagejournal.org/wp-content/uploads/bb-plugin/cache/23466317216_b99485ba14_o-panorama.jpg";
   changeTitle(title){
     this.title = title;
@@ -25,5 +27,12 @@ export class AppComponent {
   }
   changeImg(source){
     this.imageSource = source;
+  }
+  addPerson(){
+    this.persons.push(this.person);
+    this.person = {
+      name: '',
+      phone: ''
+    }
   }
 }
