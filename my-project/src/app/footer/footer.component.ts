@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
-  constructor() { }
+  name;
+  phone;
+  constructor(private obj: ActivatedRoute) { }
 
   ngOnInit() {
+    this.name = this.obj.snapshot.params.name;
+    this.phone = this.obj.snapshot.params.phone;
+    localStorage.setItem('name', this.name)
+    localStorage.setItem('phone', this.phone)
   }
 
 }

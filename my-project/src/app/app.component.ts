@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-first-page',
@@ -6,33 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'My APP';
-  red="blue";
-  redClass = "blueClass";
-  person = {
-    name:'',
-    phone:''
-  }
-  yourChoice = "";
-  persons = [];
-  imageSource = "https://imagejournal.org/wp-content/uploads/bb-plugin/cache/23466317216_b99485ba14_o-panorama.jpg";
-  changeTitle(title){
-    this.title = title;
-  }
-  changeClass(){
-    this.redClass = 'redClass';
-  }
-  print(title){
-    console.log(title);
-  }
-  changeImg(source){
-    this.imageSource = source;
-  }
-  addPerson(){
-    this.persons.push(this.person);
-    this.person = {
-      name: '',
-      phone: ''
-    }
-  }
+  
 }

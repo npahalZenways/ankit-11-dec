@@ -6,18 +6,44 @@ import { Header } from "./header/header.component";
 import { FooterComponent } from './footer/footer.component';
 import { NewComponent } from "./newComponent/newComp";
 import { CommonModule } from "@angular/common";
+import { AnyComponentComponent } from './any-component/any-component.component';
+import { RouterModule } from "@angular/router";
+import { CompComponent } from './comp/comp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Header,
     FooterComponent,
-    NewComponent
+    NewComponent,
+    AnyComponentComponent,
+    CompComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    RouterModule.forRoot([{
+      path: '',
+      redirectTo: 'header',
+      pathMatch: 'full'
+    },{
+      path: 'header',
+      component: Header,
+      children: [{
+        path: 'any',
+        component: AnyComponentComponent
+      },{
+        path: 'comp',
+        component: CompComponent
+      }]
+    },{
+      path: 'footer/:name/:phone',
+      component: FooterComponent
+    }, {
+      path: 'new',
+      component: NewComponent
+    }])
   ],
   providers: [],
   bootstrap: [AppComponent]
