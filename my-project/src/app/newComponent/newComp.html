@@ -2,14 +2,18 @@
     <h1>This is {{title}}</h1>
     <h3>Recieved name is {{myCompName}}</h3>
 </div>
-
+<div>
+    <button (click)="login.setUser(true)">Login</button>
+    <button (click)="login.setUser(false)">Logout</button>
+</div>
 <form #myForm="ngForm" (ngSubmit)="submit()">
-        <label>Username</label><input type="text" name="username" [(ngModel)]="username" #uname="ngModel" pattern="^[A-Za-z0-9]{3}$" required><br><br>
+        <label>Username</label><input type="text" name="username" [(ngModel)]="user.username" minlength="5" #uname="ngModel" pattern="^[A-Za-z0-9]+$" required><br><br>
         <div *ngIf="uname.errors">
             <small *ngIf="uname.errors.required && uname.touched">Username is required</small>
-            <small *ngIf="uname.errors.pattern && uname.touched">UUsername could be an alphanumeric keyword with minimun length of 3 characters</small>
+            <small *ngIf="uname.errors.pattern && uname.touched">Username could be an alphanumeric keyword with minimun length of 3 characters</small>
+            <small *ngIf="uname.errors.minlength && uname.touched">Username could not be less than 5 characters</small>
         </div>
-        <label>Password</label><input type="password" name="password" pattern="^[A-Z]{1,}[a-z]{1,}[0-9]{1,}[,./!@#$%^&*()]{1,}$" [(ngModel)]="password" #pass="ngModel" required>
+        <label>Password</label><input type="password" name="password" pattern="^[A-Z]{1,}[a-z]{1,}[0-9]{1,}[,./!@#$%^&*()]{1,}$" [(ngModel)]="user.password" #pass="ngModel" required>
         <div *ngIf="pass.errors">
             <small *ngIf="pass.errors.required && pass.touched">Password is required</small>
             <small *ngIf="pass.errors.pattern && pass.touched">Password must contain one Capital and one small alphabet, one number and one special character</small>
@@ -18,3 +22,29 @@
         <button type="reset">Reset</button>
         <button type="submit" [disabled]="myForm.invalid">Submit</button>
 </form>
+
+<br>
+<br>
+Birthday: {{myBirthday | date:'dd-MM-yyyy hh:mm:ss a'}}
+<br>
+<br>
+BirthDay: {{myBirthday | date:'longDate'}}
+<br><br>
+BirthDay: {{myBirthday | date:'MMMM d, y'}}
+<br><br>
+Number: {{CustomNumber | number:'3.3-5'}}
+<!-- number: '{minDigitsBeforeDecimal}.{minDigitsAfterDecimal}-{maxDigitsAfterDecimal}' -->
+<br><br>
+Number: {{CustomNumber}}
+<br><br>
+Currency: {{CustomNumber | currency:'USD':'USD'}}
+<br><br>
+{{user.username | mycustompipe:'lower':10}}
+<p my-directive>
+    This is for test
+</p>
+<button my-directive>Click</button>
+<button my-directive>Click1</button>
+<button my-directive>Click2</button>
+<button my-directive>Click3</button>
+<my-directive name="myName"></my-directive>

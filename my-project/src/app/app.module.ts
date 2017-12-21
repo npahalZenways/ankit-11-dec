@@ -9,15 +9,20 @@ import { CommonModule } from "@angular/common";
 import { AnyComponentComponent } from './any-component/any-component.component';
 import { RouterModule } from "@angular/router";
 import { CompComponent } from './comp/comp.component';
+import { MyPipe } from "./myPipe";
+import { LoginService } from "./myService";
+import { MyDirective } from "./myDirective";
 
 @NgModule({
   declarations: [
+    MyDirective,
     AppComponent,
     Header,
     FooterComponent,
     NewComponent,
     AnyComponentComponent,
-    CompComponent
+    CompComponent,
+    MyPipe
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,7 @@ import { CompComponent } from './comp/comp.component';
       component: NewComponent
     }])
   ],
-  providers: [],
+  providers: [ LoginService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
