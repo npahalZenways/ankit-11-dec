@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 
 @Component({
     selector: 'app-forms',
@@ -9,7 +9,12 @@ import { Component } from "@angular/core";
 export class NewComponent {
     title = 'app-forms'
     myCompName;
+    @ViewChild('myForm') form;
     constructor() {
         
+    }
+    submit(){
+        console.log('submitted')
+        console.log(this.form)
     }
 }

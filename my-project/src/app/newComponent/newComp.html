@@ -2,3 +2,19 @@
     <h1>This is {{title}}</h1>
     <h3>Recieved name is {{myCompName}}</h3>
 </div>
+
+<form #myForm="ngForm" (ngSubmit)="submit()">
+        <label>Username</label><input type="text" name="username" [(ngModel)]="username" #uname="ngModel" pattern="^[A-Za-z0-9]{3}$" required><br><br>
+        <div *ngIf="uname.errors">
+            <small *ngIf="uname.errors.required && uname.touched">Username is required</small>
+            <small *ngIf="uname.errors.pattern && uname.touched">UUsername could be an alphanumeric keyword with minimun length of 3 characters</small>
+        </div>
+        <label>Password</label><input type="password" name="password" pattern="^[A-Z]{1,}[a-z]{1,}[0-9]{1,}[,./!@#$%^&*()]{1,}$" [(ngModel)]="password" #pass="ngModel" required>
+        <div *ngIf="pass.errors">
+            <small *ngIf="pass.errors.required && pass.touched">Password is required</small>
+            <small *ngIf="pass.errors.pattern && pass.touched">Password must contain one Capital and one small alphabet, one number and one special character</small>
+        </div>
+        <button type="button" (click)="myForm.form.markAsUntouched()">Click</button>
+        <button type="reset">Reset</button>
+        <button type="submit" [disabled]="myForm.invalid">Submit</button>
+</form>

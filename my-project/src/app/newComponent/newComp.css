@@ -1,6 +1,15 @@
 h1{
     color: blue
 }
-div{
+/* div{
     border: 1px solid red;
+} */
+input.ng-untouched{
+    border-color: cyan;
+}
+input.ng-touched.ng-invalid{
+    border-color: red;
+}
+input.ng-touched.ng-valid{
+    border-color:green;
 }
