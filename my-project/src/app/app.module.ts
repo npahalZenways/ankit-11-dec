@@ -12,6 +12,9 @@ import { CompComponent } from './comp/comp.component';
 import { MyPipe } from "./myPipe";
 import { LoginService } from "./myService";
 import { MyDirective } from "./myDirective";
+import { HttpComponent } from "./http/http";
+// http service 
+import { HttpModule } from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -22,9 +25,11 @@ import { MyDirective } from "./myDirective";
     NewComponent,
     AnyComponentComponent,
     CompComponent,
-    MyPipe
+    MyPipe,
+    HttpComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     FormsModule,
     CommonModule,

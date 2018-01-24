@@ -3,9 +3,10 @@
     <h3>Recieved name is {{myCompName}}</h3>
 </div>
 <div>
-    <button (click)="login.setUser(true)">Login</button>
-    <button (click)="login.setUser(false)">Logout</button>
+    <button>Login</button>
+    <button>Logout</button>
 </div>
+<!-- Form validations -->
 <form #myForm="ngForm" (ngSubmit)="submit()">
         <label>Username</label><input type="text" name="username" [(ngModel)]="user.username" minlength="5" #uname="ngModel" pattern="^[A-Za-z0-9]+$" required><br><br>
         <div *ngIf="uname.errors">
